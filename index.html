@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BROCADE COTTON · 配音社</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Work Sans', 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* 织锦质感背景：深色底 + 细腻的斜纹/颗粒纹理 */
+            background-color: #1e1812;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(201, 168, 108, 0.04) 0px, rgba(201, 168, 108, 0.04) 2px, transparent 2px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(201, 168, 108, 0.03) 0px, rgba(201, 168, 108, 0.03) 2px, transparent 2px, transparent 6px),
+                radial-gradient(circle at 30% 20%, rgba(166, 124, 78, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 75%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
+                linear-gradient(145deg, #2c241b 0%, #1a1410 100%);
+            color: #f8f4eb;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 额外的织锦边框光晕，让背景更有层次 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.35) 100%);
+            z-index: 0;
+        }
+
+        /* 所有内容置于光晕之上 */
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 大标题：织锦金与米白交融，轻微辉光 */
+        .main-title {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: clamp(3rem, 12vw, 7rem);
+            color: #f8f4eb;
+            text-shadow: 
+                0 0 20px rgba(201, 168, 108, 0.5),
+                0 4px 16px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.1em;
+        }
+
+        .title-line {
+            display: block;
+        }
+
+        /* 让 COTTON 呈现金色渐变 */
+        .title-gold {
+            background: linear-gradient(145deg, #e6cf9f, #c9a86c, #a67c4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(201, 168, 108, 0.45));
+        }
+
+        /* 副标题小字 */
+        .subtitle {
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #b8aa98;
+            font-weight: 400;
+            margin-top: -1rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* 按钮组 */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        /* 基础按钮样式 — 清晰易辨 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 2px solid transparent;
+            min-width: 200px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 进入按钮：实心金色，醒目 */
+        .btn-enter {
+            background: linear-gradient(145deg, #c9a86c, #a67c4e);
+            color: #1e1812;
+            border-color: #c9a86c;
+            box-shadow: 
+                0 8px 24px rgba(201, 168, 108, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .btn-enter:hover {
+            background: linear-gradient(145deg, #e6cf9f, #c9a86c);
+            border-color: #e6cf9f;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 16px 32px rgba(201, 168, 108, 0.55),
+                0 0 20px rgba(201, 168, 108, 0.4);
+        }
+
+        /* 加入或联系按钮：透明描边，清晰可见 */
+        .btn-join {
+            background: rgba(248, 244, 235, 0.06);
+            color: #f8f4eb;
+            border-color: #c9a86c;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-join:hover {
+            background: rgba(201, 168, 108, 0.18);
+            border-color: #e6cf9f;
+            color: #ffffff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 16px 32px rgba(201, 168, 108, 0.3),
+                0 0 24px rgba(201, 168, 108, 0.25);
+        }
+
+        /* 底部装饰细线 */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 1rem;
+            opacity: 0.6;
+        }
+
+        .deco-line span {
+            display: block;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a86c, transparent);
+        }
+
+        .deco-dot {
+            width: 6px;
+            height: 6px;
+            background: #c9a86c;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #c9a86c;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .main-title {
+                letter-spacing: 1px;
+            }
+            .subtitle {
+                letter-spacing: 4px;
+            }
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 1.05rem;
+                min-width: 160px;
+            }
+            .button-group {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 大名字 -->
+        <h1 class="main-title">
+            <span class="title-line">BROCADE</span>
+            <span class="title-line title-gold">COTTON</span>
+        </h1>
+        <p class="subtitle">Voice Acting</p>
+
+        <!-- 两个清晰的大按钮 -->
+        <div class="button-group">
+            <!-- 进入按钮 → http://bcva.of.cd/in -->
+            <a href="http://bcva.of.cd/in" class="btn btn-enter">进入</a>
+            <!-- 加入或联系按钮 → http://bcva.of.cd/join -->
+            <a href="http://bcva.of.cd/join" class="btn btn-join">加入或联系</a>
+        </div>
+
+        <!-- 底部小装饰，增加精致感 -->
+        <div class="deco-line">
+            <span></span>
+            <div class="deco-dot"></div>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
