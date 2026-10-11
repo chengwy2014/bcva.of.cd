@@ -21,33 +21,30 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* 织锦质感背景：深色底 + 细腻的斜纹/颗粒纹理 */
-            background-color: #1e1812;
+            /* 深色渐变背景 + 细腻纹理 */
+            background-color: #0f1f1c;
             background-image: 
-                repeating-linear-gradient(45deg, rgba(201, 168, 108, 0.04) 0px, rgba(201, 168, 108, 0.04) 2px, transparent 2px, transparent 6px),
-                repeating-linear-gradient(-45deg, rgba(201, 168, 108, 0.03) 0px, rgba(201, 168, 108, 0.03) 2px, transparent 2px, transparent 6px),
-                radial-gradient(circle at 30% 20%, rgba(166, 124, 78, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 75%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
-                linear-gradient(145deg, #2c241b 0%, #1a1410 100%);
-            color: #f8f4eb;
+                repeating-linear-gradient(45deg, rgba(122, 196, 178, 0.04) 0px, rgba(122, 196, 178, 0.04) 2px, transparent 2px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(122, 196, 178, 0.03) 0px, rgba(122, 196, 178, 0.03) 2px, transparent 2px, transparent 6px),
+                radial-gradient(circle at 25% 20%, rgba(232, 149, 92, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 80% 78%, rgba(122, 196, 178, 0.16) 0%, transparent 50%),
+                linear-gradient(160deg, #14312b 0%, #0b1a17 100%);
+            color: #eef4f1;
             padding: 2rem;
             text-align: center;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* 额外的织锦边框光晕，让背景更有层次 */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background: 
-                radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.35) 100%);
+            background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%);
             z-index: 0;
         }
 
-        /* 所有内容置于光晕之上 */
         .container {
             position: relative;
             z-index: 1;
@@ -63,47 +60,66 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 大标题：BROCADE 和 COTTON 大小一致 */
+        /* 大标题：两行，每行两个单词，所有单词字号完全一致 */
         .main-title {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             line-height: 1.2;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: clamp(3rem, 12vw, 7rem);
-            color: #f8f4eb;
-            text-shadow: 
-                0 0 20px rgba(201, 168, 108, 0.5),
-                0 4px 16px rgba(0, 0, 0, 0.6);
+            letter-spacing: 4px;
+            font-size: clamp(2rem, 8vw, 5rem);
+            color: #eef4f1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.1em;
+            gap: 0.15em;
         }
 
-        .title-line {
-            display: block;
-            font-size: 1em; /* 确保两行字号一致 */
+        .title-row {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.4em;
+            font-size: 1em;
         }
 
-        /* 让 COTTON 呈现金色渐变 */
-        .title-gold {
-            background: linear-gradient(145deg, #e6cf9f, #c9a86c, #a67c4e);
+        .title-word {
+            display: inline-block;
+            font-size: 1em;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 四个单词各自的配色 */
+        .word-brocade {
+            background: linear-gradient(145deg, #eef4f1, #b8c9c3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 12px rgba(201, 168, 108, 0.45));
+            filter: drop-shadow(0 0 14px rgba(238, 244, 241, 0.35));
         }
 
-        /* 副标题小字 */
-        .subtitle {
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: #b8aa98;
-            font-weight: 400;
-            margin-top: -1rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        .word-cotton {
+            background: linear-gradient(145deg, #f7c88a, #e8955c, #d4733f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 14px rgba(232, 149, 92, 0.5));
+        }
+
+        .word-voice {
+            background: linear-gradient(145deg, #b8e6d8, #7ac4b2, #4a9b88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 14px rgba(122, 196, 178, 0.5));
+        }
+
+        .word-acting {
+            background: linear-gradient(145deg, #c9b6f0, #9b7fd4, #7458b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 14px rgba(155, 127, 212, 0.5));
         }
 
         /* 按钮组 */
@@ -115,7 +131,6 @@
             margin-top: 1rem;
         }
 
-        /* 基础按钮样式 — 两个按钮文字大小一致 */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -135,41 +150,41 @@
             backdrop-filter: blur(4px);
         }
 
-        /* 进入按钮：实心金色，醒目 */
+        /* 进入按钮：暖橘金实心，醒目 */
         .btn-enter {
-            background: linear-gradient(145deg, #c9a86c, #a67c4e);
-            color: #1e1812;
-            border-color: #c9a86c;
+            background: linear-gradient(145deg, #e8955c, #d4733f);
+            color: #0f1f1c;
+            border-color: #e8955c;
             box-shadow: 
-                0 8px 24px rgba(201, 168, 108, 0.4),
+                0 8px 24px rgba(232, 149, 92, 0.35),
                 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
         }
 
         .btn-enter:hover {
-            background: linear-gradient(145deg, #e6cf9f, #c9a86c);
-            border-color: #e6cf9f;
+            background: linear-gradient(145deg, #f7c88a, #e8955c);
+            border-color: #f7c88a;
             transform: translateY(-4px) scale(1.02);
             box-shadow: 
-                0 16px 32px rgba(201, 168, 108, 0.55),
-                0 0 20px rgba(201, 168, 108, 0.4);
+                0 16px 32px rgba(232, 149, 92, 0.5),
+                0 0 24px rgba(232, 149, 92, 0.4);
         }
 
-        /* 加入或联系按钮：透明描边，清晰可见 */
+        /* 加入或联系按钮：青瓷绿描边 */
         .btn-join {
-            background: rgba(248, 244, 235, 0.06);
-            color: #f8f4eb;
-            border-color: #c9a86c;
+            background: rgba(122, 196, 178, 0.08);
+            color: #b8e6d8;
+            border-color: #7ac4b2;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
         .btn-join:hover {
-            background: rgba(201, 168, 108, 0.18);
-            border-color: #e6cf9f;
+            background: rgba(122, 196, 178, 0.2);
+            border-color: #b8e6d8;
             color: #ffffff;
             transform: translateY(-4px) scale(1.02);
             box-shadow: 
-                0 16px 32px rgba(201, 168, 108, 0.3),
-                0 0 24px rgba(201, 168, 108, 0.25);
+                0 16px 32px rgba(122, 196, 178, 0.3),
+                0 0 24px rgba(122, 196, 178, 0.3);
         }
 
         /* 底部装饰细线 */
@@ -178,31 +193,28 @@
             align-items: center;
             gap: 12px;
             margin-top: 1rem;
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .deco-line span {
             display: block;
             width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #c9a86c, transparent);
+            background: linear-gradient(90deg, transparent, #7ac4b2, transparent);
         }
 
         .deco-dot {
             width: 6px;
             height: 6px;
-            background: #c9a86c;
+            background: #e8955c;
             border-radius: 50%;
-            box-shadow: 0 0 10px #c9a86c;
+            box-shadow: 0 0 10px #e8955c;
         }
 
         /* 响应式 */
         @media (max-width: 600px) {
             .main-title {
-                letter-spacing: 1px;
-            }
-            .subtitle {
-                letter-spacing: 4px;
+                letter-spacing: 2px;
             }
             .btn {
                 padding: 0.9rem 2rem;
@@ -217,264 +229,25 @@
 </head>
 <body>
     <div class="container">
-        <!-- 大名字：两行字号完全一致 -->
+        <!-- 大名字：四个单词各自颜色，字号完全一致 -->
         <h1 class="main-title">
-            <span class="title-line">BROCADE</span>
-            <span class="title-line title-gold">COTTON</span>
+            <span class="title-row">
+                <span class="title-word word-brocade">BROCADE</span>
+                <span class="title-word word-cotton">COTTON</span>
+            </span>
+            <span class="title-row">
+                <span class="title-word word-voice">VOICE</span>
+                <span class="title-word word-acting">ACTING</span>
+            </span>
         </h1>
-        <p class="subtitle">Voice Acting</p>
 
         <!-- 两个文字大小一致的按钮 -->
         <div class="button-group">
-            <!-- 进入按钮 → http://bcva.of.cd/in -->
-            <a href="http://bcva.of.cd/in" class="btn btn-enter">进入</a>
-            <!-- 加入或联系按钮 → http://bcva.of.cd/join -->
-            <a href="http://bcva.of.cd/join" class="btn btn-join">加入或联系</a>
-        </div>
-
-        <!-- 底部小装饰，增加精致感 -->
-        <div class="deco-line">
-            <span></span>
-            <div class="deco-dot"></div>
-            <span></span>
-        </div>
-    </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BROCADE COTTON · 配音社</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            font-family: 'Work Sans', 'Quicksand', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* 织锦质感背景：深色底 + 细腻的斜纹/颗粒纹理 */
-            background-color: #1e1812;
-            background-image: 
-                repeating-linear-gradient(45deg, rgba(201, 168, 108, 0.04) 0px, rgba(201, 168, 108, 0.04) 2px, transparent 2px, transparent 6px),
-                repeating-linear-gradient(-45deg, rgba(201, 168, 108, 0.03) 0px, rgba(201, 168, 108, 0.03) 2px, transparent 2px, transparent 6px),
-                radial-gradient(circle at 30% 20%, rgba(166, 124, 78, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 75%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
-                linear-gradient(145deg, #2c241b 0%, #1a1410 100%);
-            color: #f8f4eb;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* 额外的织锦边框光晕，让背景更有层次 */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background: 
-                radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.35) 100%);
-            z-index: 0;
-        }
-
-        /* 所有内容置于光晕之上 */
-        .container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3.5rem;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 大标题：BROCADE 和 COTTON 大小一致 */
-        .main-title {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: clamp(3rem, 12vw, 7rem);
-            color: #f8f4eb;
-            text-shadow: 
-                0 0 20px rgba(201, 168, 108, 0.5),
-                0 4px 16px rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.1em;
-        }
-
-        .title-line {
-            display: block;
-            font-size: 1em; /* 确保两行字号一致 */
-        }
-
-        /* 让 COTTON 呈现金色渐变 */
-        .title-gold {
-            background: linear-gradient(145deg, #e6cf9f, #c9a86c, #a67c4e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 12px rgba(201, 168, 108, 0.45));
-        }
-
-        /* 副标题小字 */
-        .subtitle {
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: #b8aa98;
-            font-weight: 400;
-            margin-top: -1rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        }
-
-        /* 按钮组 */
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        /* 基础按钮样式 — 两个按钮文字大小一致 */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 3rem;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 60px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            border: 2px solid transparent;
-            min-width: 200px;
-            backdrop-filter: blur(4px);
-        }
-
-        /* 进入按钮：实心金色，醒目 */
-        .btn-enter {
-            background: linear-gradient(145deg, #c9a86c, #a67c4e);
-            color: #1e1812;
-            border-color: #c9a86c;
-            box-shadow: 
-                0 8px 24px rgba(201, 168, 108, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-        }
-
-        .btn-enter:hover {
-            background: linear-gradient(145deg, #e6cf9f, #c9a86c);
-            border-color: #e6cf9f;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 
-                0 16px 32px rgba(201, 168, 108, 0.55),
-                0 0 20px rgba(201, 168, 108, 0.4);
-        }
-
-        /* 加入或联系按钮：透明描边，清晰可见 */
-        .btn-join {
-            background: rgba(248, 244, 235, 0.06);
-            color: #f8f4eb;
-            border-color: #c9a86c;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-join:hover {
-            background: rgba(201, 168, 108, 0.18);
-            border-color: #e6cf9f;
-            color: #ffffff;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 
-                0 16px 32px rgba(201, 168, 108, 0.3),
-                0 0 24px rgba(201, 168, 108, 0.25);
-        }
-
-        /* 底部装饰细线 */
-        .deco-line {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 1rem;
-            opacity: 0.6;
-        }
-
-        .deco-line span {
-            display: block;
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #c9a86c, transparent);
-        }
-
-        .deco-dot {
-            width: 6px;
-            height: 6px;
-            background: #c9a86c;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #c9a86c;
-        }
-
-        /* 响应式 */
-        @media (max-width: 600px) {
-            .main-title {
-                letter-spacing: 1px;
-            }
-            .subtitle {
-                letter-spacing: 4px;
-            }
-            .btn {
-                padding: 0.9rem 2rem;
-                font-size: 1.05rem;
-                min-width: 160px;
-            }
-            .button-group {
-                gap: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- 大名字：两行字号完全一致 -->
-        <h1 class="main-title">
-            <span class="title-line">BROCADE</span>
-            <span class="title-line title-gold">COTTON</span>
-        </h1>
-        <p class="subtitle">Voice Acting</p>
-
-        <!-- 两个文字大小一致的按钮 -->
-        <div class="button-group">
-            <!-- 进入按钮 → http://bcva.of.cd/home.html -->
             <a href="http://bcva.of.cd/home.html" class="btn btn-enter">进入</a>
-            <!-- 加入或联系按钮 → http://bcva.of.cd/join -->
             <a href="http://bcva.of.cd/join" class="btn btn-join">加入或联系</a>
         </div>
 
-        <!-- 底部小装饰，增加精致感 -->
+        <!-- 底部小装饰 -->
         <div class="deco-line">
             <span></span>
             <div class="deco-dot"></div>
