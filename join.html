@@ -60,9 +60,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 页面标题 */
-        .page-title {
+        /* 页面标题区 */
+        .page-header {
             text-align: center;
+        }
+
+        .page-title {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -73,6 +76,16 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 0 16px rgba(232, 149, 92, 0.45));
+        }
+
+        /* 招募说明文字 */
+        .recruit-text {
+            margin-top: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #b8e6d8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         /* 联系人列表 */
@@ -198,35 +211,38 @@
 </head>
 <body>
     <div class="container">
-        <!-- 页面标题 -->
-        <h1 class="page-title">加入或联系</h1>
+        <!-- 页面标题 + 招募说明 -->
+        <div class="page-header">
+            <h1 class="page-title">加入或联系</h1>
+            <p class="recruit-text">我们需要配音、剪辑、翻唱、绘画、写文、公关等，欢迎更多人加入</p>
+        </div>
 
         <!-- 联系人列表 -->
         <div class="contact-list">
             <div class="contact-item">
                 <span class="contact-role">社长微信号</span>
-                <span class="contact-id">xiaofengandfeng</span>
+                <span class="contact-id">xxxx</span>
             </div>
             <div class="contact-item">
                 <span class="contact-role">副社长一微信号</span>
-                <span class="contact-id">尚未填写</span>
+                <span class="contact-id">xxxx</span>
             </div>
             <div class="contact-item">
                 <span class="contact-role">副社长二微信号</span>
-                <span class="contact-id">尚未填写</span>
+                <span class="contact-id">xxxx</span>
             </div>
             <div class="contact-item">
                 <span class="contact-role">副社长三微信号</span>
-                <span class="contact-id">zzqvq0114</span>
+                <span class="contact-id">xxxx</span>
             </div>
             <div class="contact-item">
-                <span class="contact-role">网页制作者微信号（除网问题页外别找我）</span>
-                <span class="contact-id">akagishigeru1</span>
+                <span class="contact-role">副社长四微信号</span>
+                <span class="contact-id">xxxx</span>
             </div>
         </div>
 
         <!-- 返回首页按钮 → http://bcva.of.cd/ -->
-        <a href="http://bcva.of.cd/" class="btn-home">返回欢迎页</a>
+        <a href="http://bcva.of.cd/" class="btn-home">返回首页</a>
 
         <!-- 底部小装饰 -->
         <div class="deco-line">
