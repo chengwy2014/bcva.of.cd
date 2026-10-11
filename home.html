@@ -21,14 +21,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #1e1812;
+            /* 深色渐变背景 + 细腻纹理 */
+            background-color: #0f1f1c;
             background-image: 
-                repeating-linear-gradient(45deg, rgba(201, 168, 108, 0.04) 0px, rgba(201, 168, 108, 0.04) 2px, transparent 2px, transparent 6px),
-                repeating-linear-gradient(-45deg, rgba(201, 168, 108, 0.03) 0px, rgba(201, 168, 108, 0.03) 2px, transparent 2px, transparent 6px),
-                radial-gradient(circle at 30% 20%, rgba(166, 124, 78, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 75%, rgba(201, 168, 108, 0.12) 0%, transparent 45%),
-                linear-gradient(145deg, #2c241b 0%, #1a1410 100%);
-            color: #f8f4eb;
+                repeating-linear-gradient(45deg, rgba(122, 196, 178, 0.04) 0px, rgba(122, 196, 178, 0.04) 2px, transparent 2px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(122, 196, 178, 0.03) 0px, rgba(122, 196, 178, 0.03) 2px, transparent 2px, transparent 6px),
+                radial-gradient(circle at 25% 20%, rgba(232, 149, 92, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 80% 78%, rgba(122, 196, 178, 0.16) 0%, transparent 50%),
+                linear-gradient(160deg, #14312b 0%, #0b1a17 100%);
+            color: #eef4f1;
             padding: 2rem;
             position: relative;
             overflow-x: hidden;
@@ -39,7 +40,7 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.35) 100%);
+            background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%);
             z-index: 0;
         }
 
@@ -58,11 +59,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 返回首页按钮 */
-        .back-home {
+        /* 首页按钮 */
+        .btn-home {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             padding: 1rem 3rem;
             font-family: 'Quicksand', sans-serif;
             font-size: 1.25rem;
@@ -70,24 +71,28 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
-            color: #c9a86c;
-            border: 2px solid #c9a86c;
             border-radius: 60px;
-            background: rgba(201, 168, 108, 0.06);
+            cursor: pointer;
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            backdrop-filter: blur(4px);
+            border: 2px solid transparent;
             min-width: 200px;
-            justify-content: center;
+            backdrop-filter: blur(4px);
+            /* 暖橘金实心 */
+            background: linear-gradient(145deg, #e8955c, #d4733f);
+            color: #0f1f1c;
+            border-color: #e8955c;
+            box-shadow: 
+                0 8px 24px rgba(232, 149, 92, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
         }
 
-        .back-home:hover {
-            background: rgba(201, 168, 108, 0.18);
-            border-color: #e6cf9f;
-            color: #ffffff;
+        .btn-home:hover {
+            background: linear-gradient(145deg, #f7c88a, #e8955c);
+            border-color: #f7c88a;
             transform: translateY(-4px) scale(1.02);
             box-shadow: 
-                0 16px 32px rgba(201, 168, 108, 0.3),
-                0 0 24px rgba(201, 168, 108, 0.25);
+                0 16px 32px rgba(232, 149, 92, 0.5),
+                0 0 24px rgba(232, 149, 92, 0.4);
         }
 
         /* 底部装饰细线 */
@@ -95,26 +100,26 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .deco-line span {
             display: block;
             width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #c9a86c, transparent);
+            background: linear-gradient(90deg, transparent, #7ac4b2, transparent);
         }
 
         .deco-dot {
             width: 6px;
             height: 6px;
-            background: #c9a86c;
+            background: #e8955c;
             border-radius: 50%;
-            box-shadow: 0 0 10px #c9a86c;
+            box-shadow: 0 0 10px #e8955c;
         }
 
         @media (max-width: 600px) {
-            .back-home {
+            .btn-home {
                 padding: 0.9rem 2rem;
                 font-size: 1.05rem;
                 min-width: 160px;
@@ -124,8 +129,8 @@
 </head>
 <body>
     <div class="container">
-        <!-- 返回首页按钮 → http://bcva.of.cd/ -->
-        <a href="http://bcva.of.cd/" class="back-home">返回首页</a>
+        <!-- 首页按钮 → http://bcva.of.cd/ -->
+        <a href="http://bcva.of.cd/" class="btn-home">首页</a>
 
         <!-- 底部小装饰 -->
         <div class="deco-line">
