@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BROCADE COTTON · 加入或联系</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Work Sans', 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* 深色渐变背景 + 细腻纹理 */
+            background-color: #0f1f1c;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(122, 196, 178, 0.04) 0px, rgba(122, 196, 178, 0.04) 2px, transparent 2px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(122, 196, 178, 0.03) 0px, rgba(122, 196, 178, 0.03) 2px, transparent 2px, transparent 6px),
+                radial-gradient(circle at 25% 20%, rgba(232, 149, 92, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 80% 78%, rgba(122, 196, 178, 0.16) 0%, transparent 50%),
+                linear-gradient(160deg, #14312b 0%, #0b1a17 100%);
+            color: #eef4f1;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 页面标题 */
+        .page-title {
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: linear-gradient(145deg, #f7c88a, #e8955c, #d4733f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 16px rgba(232, 149, 92, 0.45));
+        }
+
+        /* 联系人列表 */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: rgba(122, 196, 178, 0.06);
+            border: 1px solid rgba(122, 196, 178, 0.3);
+            border-radius: 18px;
+            padding: 1.2rem 1.6rem;
+            backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .contact-item:hover {
+            background: rgba(122, 196, 178, 0.12);
+            border-color: rgba(122, 196, 178, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-role {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #b8e6d8;
+            white-space: nowrap;
+        }
+
+        .contact-id {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #f7c88a;
+            letter-spacing: 0.5px;
+            word-break: break-all;
+        }
+
+        /* 返回首页按钮 */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            padding: 1rem 3rem;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 2px solid transparent;
+            min-width: 200px;
+            backdrop-filter: blur(4px);
+            /* 暖橘金实心 */
+            background: linear-gradient(145deg, #e8955c, #d4733f);
+            color: #0f1f1c;
+            border-color: #e8955c;
+            box-shadow: 
+                0 8px 24px rgba(232, 149, 92, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(145deg, #f7c88a, #e8955c);
+            border-color: #f7c88a;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                0 16px 32px rgba(232, 149, 92, 0.5),
+                0 0 24px rgba(232, 149, 92, 0.4);
+        }
+
+        /* 底部装饰细线 */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0.7;
+        }
+
+        .deco-line span {
+            display: block;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #7ac4b2, transparent);
+        }
+
+        .deco-dot {
+            width: 6px;
+            height: 6px;
+            background: #e8955c;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #e8955c;
+        }
+
+        @media (max-width: 600px) {
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+                padding: 1rem 1.2rem;
+            }
+            .btn-home {
+                padding: 0.9rem 2rem;
+                font-size: 1.05rem;
+                min-width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 页面标题 -->
+        <h1 class="page-title">加入或联系</h1>
+
+        <!-- 联系人列表 -->
+        <div class="contact-list">
+            <div class="contact-item">
+                <span class="contact-role">社长微信号</span>
+                <span class="contact-id">xxxx</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-role">副社长一微信号</span>
+                <span class="contact-id">xxxx</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-role">副社长二微信号</span>
+                <span class="contact-id">xxxx</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-role">副社长三微信号</span>
+                <span class="contact-id">xxxx</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-role">副社长四微信号</span>
+                <span class="contact-id">xxxx</span>
+            </div>
+        </div>
+
+        <!-- 返回首页按钮 → http://bcva.of.cd/ -->
+        <a href="http://bcva.of.cd/" class="btn-home">返回首页</a>
+
+        <!-- 底部小装饰 -->
+        <div class="deco-line">
+            <span></span>
+            <div class="deco-dot"></div>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
